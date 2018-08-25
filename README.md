@@ -10,7 +10,8 @@ A brief explaination of the contents of this repoistory:
    * `data/theme/` - The theme I use for Pelican
    * `data/settings.json.example` - Configuration file for confluence2pelican
    * `data/pelicanconf.py` - The configuration file for pelican
- * `pelican.sh` - The script I run when I've added content to my Confluence to update my website
+ * `generate.sh` - The script I run when I've added content to my Confluence to rebuild
+ * `publish.sh` - Publish the contents of `data/output/`
 
 For more information about this repository, head on over to https://kbni.net.au/projects/confluence2pelican/
 
