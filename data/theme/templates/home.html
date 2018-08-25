@@ -1,0 +1,40 @@
+<div>
+    <h1>Welcome!</h1>
+    <p>
+        About me.. hm, well. I'm a just some guy from Australia. The purpose of this site is to share
+        things that are relevant to me and are hopefully of some interest to someone out there.
+    </p>
+    <ul>
+        <li>Neat things I have found that relate to software development</li>
+        <li>My journey getting back into motorcycling</li>
+        <li>Things that have given me inspiration or guideance</li>
+        <li>Various other random things I come across..</li>
+    </ul>
+</div>
+
+{% if articles %}
+<div>
+    <hr/>
+	<h4>Latest Blog Entries</h4>
+	<ul>
+		{% for article in articles_page.object_list[:5] %}
+		<li>
+            {{ article.date.strftime('%Y-%m-%d') }}
+            <a href="/{{ article.url }}">{{ article.title.strip() }}</a>
+			{% if article.tags %}
+				{% for tag in article.tags %}
+					<a href="/{{ tag.url }}" class="badge badge-secondary">{{ tag }}</a>
+				{% endfor %}
+			{% endif %}
+		</li>
+		{% endfor %}
+	</ul>
+</div>
+{%endif%}
+
+<p>
+    <hr/>
+    This site is built using <a href="http://docs.getpelican.com/en/latest/index.html">Pelican</a>,
+    using content slurped from personal Confluence instance using
+    <a href="/projects/confluence2pelican/">confluence2pelican</a>.
+</p>

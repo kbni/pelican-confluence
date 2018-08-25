@@ -1,0 +1,11 @@
+{
+    "confluence_url": "https://your.confluence.instance/",
+    "confluence_space": "WWW",
+    "confluence_username": "username",
+    "confluence_password": "hunter2",
+    "pelican_settings": {
+        "TIMEZONE": "Australia/Sydney",
+        "AUTHOR": "KBNi",
+        "SITENAME": "KBNi"
+    }
+}

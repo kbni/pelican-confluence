@@ -1,0 +1,105 @@
+pre.prettyprint {
+  border-radius: 3px;
+  padding: 5px;
+  max-width: 95%;
+  overflow: scroll;
+  max-height: 400px;
+  box-shadow: 3px 3px 15px 3px #eee;
+}
+
+main a, .sidebar a { color: #064e9b; }
+
+/* Generic classes */
+.hidden { display: none; }
+.fixed { font-family: monospace; }
+
+
+/* Portal sidebar */
+.sidebar {
+  position: fixed;
+  top: 45px;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 20px;
+  overflow-x: hidden;
+  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+  background-color: #eee;
+  box-shadow: -1px 0px 10px 2px #eee;
+}
+
+body {
+  font-family: 'Ruda', sans-serif;
+}
+.brand {
+  font-family: 'Share Tech', sans-serif;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding-left: 10px;
+}
+.sidebar li::before {
+  content: '-';
+  color: #ccc;
+  display: inline-block;
+  width: 0.8em;
+  margin-left: -0.8em'
+}
+
+.social ul { 
+  list-style: none;
+}
+.social li::before {
+  content: none;
+}
+.social a:before {
+  margin-right: 5px;
+  vertical-align: -3px;
+}
+.social a[href*='activestate.com']:before {content: url('./images/icons/activestate.png'); } 
+.social a[href*='atom.xml']:before {content: url('./images/icons/rss.png'); } 
+.social a[href*='bitbucket.org']:before {content: url('./images/icons/bitbucket.png'); } 
+.social a[href*='code.google.com']:before {content: url('./images/icons/phosting.png'); } 
+.social a[href*='delicious.com']:before {content: url('./images/icons/delicious.png'); } 
+.social a[href*='digg.com']:before {content: url('./images/icons/digg.png'); } 
+.social a[href*='facebook.com']:before {content: url('./images/icons/facebook.png'); } 
+.social a[href*='github.com']:before {content: url('./images/icons/github.png'); } 
+.social a[href*='google.com/reader']:before {content: url('./images/icons/reader.png'); } 
+.social a[href*='jamendo.com']:before {content: url('./images/icons/jamendo.png'); } 
+.social a[href*='last.fm']:before, .social a[href*='lastfm.']:before {content: url('./images/icons/lastfm.png'); } 
+.social a[href*='linkedin.com']:before {content: url('./images/icons/linkedin.png'); } 
+.social a[href*='rss.xml']:before {content: url('./images/icons/rss.png'); } 
+.social a[href*='stackoverflow.com']:before {content: url('./images/icons/stackoverflow.png'); } 
+.social a[href*='careers.stackoverflow.com']:before {content: url('./images/icons/careers.stackoverflow.png'); } 
+.social a[href*='twitter.com']:before {content: url('./images/icons/twitter.png'); } 
+.social a[href*='weibo.com']:before {content: url('./images/icons/weibo.png'); } 
+
+
+/*  */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 40px;
+  line-height: 40px; /* Vertically center the text there */
+  text-align: center;
+}
+
+
+.badge {
+  font-size: 70%;
+  line-height: 0.9;
+  padding: 4px 3px;
+  vertical-align: middle;
+  background-color: #999999;
+}

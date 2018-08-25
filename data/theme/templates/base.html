@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>{% block windowtitle %}{{ SITENAME }}{% endblock %}</title>
+	<meta name="description" content="">
+	<meta name="author" content="{{ AUTHOR }}">
+	<!-- HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="{{ SITEURL }}/theme/html5.js"></script>
+	<![endif]-->
+    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
+    <script crossorigin="anonymous" integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script crossorigin="anonymous" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c|Ruda|Saira+Semi+Condensed|Share+Tech" rel="stylesheet">
+	<link href="/theme/kbni.css" rel="stylesheet">
+	<script src="/theme/kbni.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark p-1 pl-3 pr-3 sticky-top">
+	<a class="navbar-brand active" href="/">KBNi</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#kbniNav" aria-controls="kbniNav" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="kbniNav">
+		<ul class="navbar-nav">
+			<li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+			{% for title, link, submenu in MENU_HIERARCHY %}
+			<li class="nav-item">
+				<a class="nav-link" href="{{ link }}">{{ title }}</a>
+			</li>		
+			{% endfor %}
+			<li class="nav-item">
+				<a class="nav-link" href="/archives/">Archives</a>
+			</li>		
+		</ul>
+	</div>
+</nav>
+
+<main class="col-sm-9 col-md-10 pt-3">
+		<div class="foo">
+			{% block content %}{% endblock %}
+		</div>
+	</main>
+
+<nav class="offset-md-10 col-md-2 hidden-xs-down bg-faded sidebar">
+	{%
+		if (
+			HIERARCHY_MENU_MAP.get('/'+output_file.replace('/index.html', '/')) and 
+			HIERARCHY_MENUS[HIERARCHY_MENU_MAP.get('/'+output_file.replace('/index.html', '/'))][-1][-1]
+		)
+	%}
+		{% for s_title, s_url, sub_menu in
+			HIERARCHY_MENUS[HIERARCHY_MENU_MAP.get('/'+output_file.replace('/index.html', '/'))] %}
+			{% if sub_menu %}
+			<div>
+				{{ menu_item }}
+				<h5><a href="{{ s_url }}">{{ s_title }}</a></h5>
+				<ul>
+					{% for s_title, s_url, sub_menu_ in sub_menu %}
+						<li><a href="{{ s_url }}">{{ s_title }}</a></li>
+						{% if sub_menu_ %}
+							<ul>
+							{% for s_title, s_url, sub_menu__ in sub_menu_ %}
+								<li><a href="{{ s_url }}">{{ s_title }}</a></li>
+							{% endfor %}
+							</ul>
+						{% endif %}
+					{% endfor %}
+				</ul>
+			</div>
+			{% endif %}
+		{% endfor %}
+		<hr/>
+	{% endif %}
+
+	<div>
+		<h6>Latest Blog Entry</h6>
+		<p>
+			<a href="/{{ articles[0].url }}">{{ articles[0].title.strip() }}</a> {{ articles[0].date.strftime('%Y-%m-%d') }}
+			<hr/>
+		</p>
+		<h6>Elsewhere Online</h6>
+		<ul class="social">
+			<li><a href="https://github.com/kbni">github</a></li>
+			<li><a href="https://www.linkedin.com/in/alex-wilson-64b83588/">linkedin</a></li>
+		</ul>
+	</div>
+	
+</nav>
+
+</body>
+</html>
